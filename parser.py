@@ -162,7 +162,7 @@ def getCustomValue(arr, citation_obj, fieldname, new_name):
 # cleanupFigshare(FIGSHARE_API, 12116301, 0, 1)
 # cleanupFigshare(FIGSHARE_API, 12111570, 0, 1)
 # x = getFigshare(ID_API, FIGSHARE_API, True) # Get a sample of the first five records
-x = getFigshare(ID_API, FIGSHARE_API, False) # Get all Figshare records
+# x = getFigshare(ID_API, FIGSHARE_API, False) # Get all Figshare records
 # import random
 # random.sample(x,1)
 
