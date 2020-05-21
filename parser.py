@@ -89,7 +89,7 @@ def standardizeType(type):
         "figure": "ImageObject",
         "online resource": "Website",
         "media": "MediaObject",
-        "presentation": "CreativeWork",
+        "presentation": "PresentationDigitalDocument",
         "poster": "CreativeWork",
         "software": "SoftwareSourceCode",
         "thesis": "Publication",
@@ -165,7 +165,6 @@ def getCustomValue(arr, citation_obj, fieldname, new_name):
 # x = getFigshare(ID_API, FIGSHARE_API, False) # Get all Figshare records
 # import random
 # random.sample(x,1)
-
 
 
 def load_annotations():
