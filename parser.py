@@ -168,6 +168,6 @@ def getCustomValue(arr, citation_obj, fieldname, new_name):
 
 
 def load_annotations():
-    docs = getFigshare(ID_API, PDB_API)
+    docs = getFigshare(ID_API, FIGSHARE_API)
     for doc in docs:
         yield doc
