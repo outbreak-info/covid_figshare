@@ -7,10 +7,9 @@ from config import DATA_ARCHIVE_ROOT
 import biothings.hub.dataload.dumper
 
 
-class FigshareDumper(biothings.hub.dataload.dumper.LastModifiedHTTPDumper):
+class FigshareDumper(biothings.hub.dataload.dumper.DummyDumper):
     # type: resource
     SRC_NAME = "covid_figshare"
-    SRC_URLS = []
     # override in subclass accordingly
     SRC_ROOT_FOLDER = os.path.join(DATA_ARCHIVE_ROOT, SRC_NAME)
 
