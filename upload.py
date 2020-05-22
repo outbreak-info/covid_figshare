@@ -18,7 +18,7 @@ except ImportError:
 
 class FigshareUploader(biothings.hub.dataload.uploader.BaseSourceUploader):
 
-    # main_source = "covid_figshare"
+    main_source = "covid_figshare"
     name = "covid_figshare"
     __metadata__ = {
         "src_meta": {
@@ -32,7 +32,7 @@ class FigshareUploader(biothings.hub.dataload.uploader.BaseSourceUploader):
     def load_data(self, data_folder):
         if data_folder:
             self.logger.info("Load data from directory: '%s'", data_folder)
-        return parser_func(data_folder)
+        return parser_func()
 
     @classmethod
     def get_mapping(klass):
