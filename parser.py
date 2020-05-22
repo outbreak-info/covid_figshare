@@ -72,7 +72,7 @@ def cleanupFigshare(api_url, id, idx, total):
         md["isBasedOn"] = [{"url": ref} for ref in entry["references"]]
         if ("files" in entry.keys()):
             md["distribution"] = [
-                {"name": fileobj["name"], "url": fileobj["download_url"]} for fileobj in entry["files"]]
+                {"name": fileobj["name"], "contentUrl": fileobj["download_url"]} for fileobj in entry["files"]]
         if("custom_fields" in entry.keys()):
             md["citedBy"] = getCited(entry)
 
