@@ -52,7 +52,7 @@ def cleanupFigshare(api_url, id, idx, total):
         entry = resp.json()
         today = date.today().strftime("%Y-%m-%d")
         md = {"curatedBy": {"@type": "Organization",
-                            "url": entry["figshare_url"], "name": "Figshare", "updatedDate": today}}
+                            "url": entry["figshare_url"], "name": "Figshare", "curationDate": today}}
         md["@type"] = standardizeType(entry["defined_type_name"])
         md["_id"] = f'figshare{entry["id"]}'
         md["identifier"] = entry["id"]
