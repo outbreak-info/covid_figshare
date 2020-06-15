@@ -58,6 +58,7 @@ def cleanupFigshare(api_url, id, idx, total):
         md["identifier"] = entry["id"]
         md["doi"] = entry["doi"]
         md["name"] = entry["title"]
+        md["url"] = entry["figshare_url"]
         md["description"] = entry["description"]
         md["author"] = [{"@type": "Person", "name": author["full_name"]}
                         for author in entry["authors"]]
@@ -120,8 +121,8 @@ def getFunder(grant):
         funding["identifier"] = grant["grant_code"]
     funding["description"] = grant["title"]
     if((grant["funder_name"] == grant["funder_name"]) & (grant["funder_name"] is not None)):
-        funding["funder"] = {"@type": "Organization",
-                             "name": grant["funder_name"]}
+        funding["funder"] = [{"@type": "Organization",
+                             "name": grant["funder_name"]}]
     return(funding)
 
 
@@ -143,7 +144,8 @@ def getCited(entry):
         citation = getCustomValue(entry["custom_fields"], citation, "Acceptance date", "dateModified")
         citation = getCustomValue(entry["custom_fields"], citation, "DOI", "doi")
         cited.append(citation)
-    return(cited)
+    if(len(cited) > 0):
+        return(cited)
 
 def getCustomValue(arr, citation_obj, fieldname, new_name):
     names = [item["name"] for item in arr]
