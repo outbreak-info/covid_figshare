@@ -20,4 +20,4 @@ class FigshareDumper(biothings.hub.dataload.dumper.DummyDumper):
         }
     }
 
-    SCHEDULE = None  # crontab format schedule, if None, won't be scheduled
+    SCHEDULE = "0 1 * * *"
