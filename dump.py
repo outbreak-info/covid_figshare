@@ -20,4 +20,4 @@ class FigshareDumper(biothings.hub.dataload.dumper.DummyDumper):
         }
     }
 
-    SCHEDULE = "0 1 * * *"
+    SCHEDULE = "0 6 * * *"
