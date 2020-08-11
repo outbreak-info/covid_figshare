@@ -5,7 +5,6 @@ from datetime import date, datetime
 ID_API = "https://covid19.figshare.com/api/institutions/857/"
 FIGSHARE_API = "https://api.figshare.com/v2/articles/"
 
-
 def getFigshare(id_url, api_url, testing=False):
     not_complete = True
     i = 0
@@ -27,12 +26,13 @@ def getFigshare(id_url, api_url, testing=False):
         ids = ids[0:5]
     md = [cleanupFigshare(api_url, id, idx, len(ids))
           for idx, id in enumerate(ids)]
-    if(len(set([entry["_id"] for entry in md])) != len(md)):
-        print("\nERROR: IDs are not unique!")
+    unique_ids = len(set([entry["_id"] for entry in md if entry]))
+    if(unique_ids != len(md)):
+        print("\nWARNING: IDs are not unique, or some requests returned an error!")
+        print(f"\n{len(md) - unique_ids} missing or duplicated unique ids")
     print("DONE!")
 
     return(md)
-
 
 def getIDs(id_url, page=0, size=1000):
     resp = requests.get(f"{id_url}items?&page={page}&page_size={size}")
@@ -41,7 +41,6 @@ def getIDs(id_url, page=0, size=1000):
         # First call: get the COVID-related IDs
         ids = [item["data"]["id"] for item in raw_data["items"]]
         return(ids)
-
 
 def cleanupFigshare(api_url, id, idx, total):
     if(idx % 10 == 0):
@@ -78,6 +77,8 @@ def cleanupFigshare(api_url, id, idx, total):
             md["citedBy"] = getCited(entry)
 
         return(md)
+    else:
+        print(f"\tReturned {resp.status_code} error for id {id}")
 
 
 
