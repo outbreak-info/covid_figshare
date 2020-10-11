@@ -5,7 +5,7 @@ biothings.config_for_app(config)
 from config import DATA_ARCHIVE_ROOT
 
 import biothings.hub.dataload.dumper
-
+import datetime
 
 class FigshareDumper(biothings.hub.dataload.dumper.DummyDumper):
     # type: resource
@@ -21,3 +21,10 @@ class FigshareDumper(biothings.hub.dataload.dumper.DummyDumper):
     }
 
     SCHEDULE = "0 6 * * *"
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.set_release()
+
+    def set_release(self):
+        self.release = datetime.datetime.now().strftime('%Y-%m-%d-%H:%M')
