@@ -103,7 +103,7 @@ def standardizeType(type):
         return(type.title())
 
 
-def standardizeDate(date_string, format="%Y-%m-%dT%H:%M:%SZ", output_format="%Y-%m-%d"):
+def standardizeDate(date_string, format="%Y-%m-%dT%H:%M:%S", output_format="%Y-%m-%d"):
     try:
         date_time = datetime.strptime(date_string, format)
         return date_time.strftime(output_format)
