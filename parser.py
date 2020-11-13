@@ -62,9 +62,9 @@ def cleanupFigshare(api_url, id, idx, total):
         md["author"] = [{"@type": "Person", "name": author["full_name"]}
                         for author in entry["authors"]]
         md["funding"] = [getFunder(grant) for grant in entry["funding_list"]]
-        md["dateModified"] = standardizeDate(entry["modified_date"])
-        md["dateCreated"] = standardizeDate(entry["created_date"])
-        md["datePublished"] = standardizeDate(entry["published_date"])
+        md["dateModified"] = standardizeDate(entry["timeline"]["revision"])
+        md["dateCreated"] = standardizeDate(entry["timeline"]["firstOnline"])
+        md["datePublished"] = standardizeDate(entry["timeline"]["posted"])
         cats = [category["title"] for category in entry["categories"]]
         cats.extend(entry["tags"])
         md["keywords"] = list(unique(cats))
