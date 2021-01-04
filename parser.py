@@ -62,7 +62,7 @@ def cleanupFigshare(api_url, id, idx, total):
         md["author"] = [{"@type": "Person", "name": author["full_name"]}
                         for author in entry["authors"]]
         md["funding"] = [getFunder(grant) for grant in entry["funding_list"]]
-        md["dateModified"] = standardizeDate(entry["timeline"]["revision"])
+        md["dateModified"] = standardizeDate(entry["timeline"].get("revision", ''))
         md["dateCreated"] = standardizeDate(entry["timeline"]["firstOnline"])
         md["datePublished"] = standardizeDate(entry["timeline"]["posted"])
         cats = [category["title"] for category in entry["categories"]]
@@ -174,3 +174,7 @@ def load_annotations():
     docs = getFigshare(ID_API, FIGSHARE_API)
     for doc in docs:
         yield doc
+
+with open('q.json', 'w') as q:
+    import json
+    json.dump([i for i in load_annotations()], q)
