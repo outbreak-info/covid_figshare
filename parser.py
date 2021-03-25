@@ -174,7 +174,3 @@ def load_annotations():
     docs = getFigshare(ID_API, FIGSHARE_API)
     for doc in docs:
         yield doc
-
-with open('q.json', 'w') as q:
-    import json
-    json.dump([i for i in load_annotations()], q)
