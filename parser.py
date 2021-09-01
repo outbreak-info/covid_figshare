@@ -41,6 +41,7 @@ def getIDs(id_url, page=0, size=1000):
         # First call: get the COVID-related IDs
         ids = [item["data"]["id"] for item in raw_data["items"]]
         return(ids)
+    return []
 
 def cleanupFigshare(api_url, id, idx, total):
     if(idx % 10 == 0):
