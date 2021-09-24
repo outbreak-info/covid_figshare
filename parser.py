@@ -176,5 +176,5 @@ def load_annotations():
     path_dict = fetch_path_dict()
     docs = getFigshare(ID_API, FIGSHARE_API)
     for eachdoc in docs:
-        doc = add_anns(eachdoc)
+        doc = add_anns(path_dict,eachdoc)
         yield doc
