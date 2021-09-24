@@ -1,6 +1,7 @@
 import requests
 from numpy import unique
 from datetime import date, datetime
+from src.append_misc_meta import *
 
 ID_API = "https://covid19.figshare.com/api/institutions/857/"
 FIGSHARE_API = "https://api.figshare.com/v2/articles/"
@@ -172,6 +173,8 @@ def getCustomValue(arr, citation_obj, fieldname, new_name):
 
 
 def load_annotations():
+    path_dict = fetch_path_dict()
     docs = getFigshare(ID_API, FIGSHARE_API)
-    for doc in docs:
+    for eachdoc in docs:
+        doc = add_anns(eachdoc)
         yield doc
