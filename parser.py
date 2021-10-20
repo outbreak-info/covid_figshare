@@ -1,7 +1,7 @@
 import requests
 from numpy import unique
 from datetime import date, datetime
-from src.append_misc_meta import *
+from .append_misc_meta import *
 
 ID_API = "https://covid19.figshare.com/api/institutions/857/"
 FIGSHARE_API = "https://api.figshare.com/v2/articles/"
