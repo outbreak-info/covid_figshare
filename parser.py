@@ -1,6 +1,14 @@
 import requests
 from numpy import unique
 from datetime import date, datetime
+import pathlib
+
+script_path = pathlib.Path(__file__).parent.absolute()
+with open(scriptpath+'append_misc_meta.py','w+') as appendfile:
+    r = requests.get('https://raw.githubusercontent.com/gtsueng/outbreak_misc_meta/main/append_misc_meta.py')
+    appendfile.write(r.text)
+    appendfile.close()
+
 from append_misc_meta import *
 
 ID_API = "https://covid19.figshare.com/api/institutions/857/"
