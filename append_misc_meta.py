@@ -67,7 +67,8 @@ def add_anns(path_dict,doc):
     ## add topic_cats
     topic_cats = fetch_annotation(path_dict,'topics_file',doc['_id'])
     if topic_cats != None and len(topic_cats)>0 and topic_cats!="[]":
-        doc['topicCategory']=topic_cats['topicCategory'].replace("'","").strip("[").strip("]").split(",")
+        topicslist=topic_cats['topicCategory'].replace("'","").strip("[").strip("]").split(",")
+        doc['topicCategory']=[x.strip(" ") for x in topicslist]
     ## add altmetrics
     altinfo = fetch_annotation(path_dict,'altmetrics_file',doc['_id'])
     if altinfo != None and len(altinfo)>0:
