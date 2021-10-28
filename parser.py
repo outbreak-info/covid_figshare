@@ -2,6 +2,7 @@ import requests
 from numpy import unique
 from datetime import date, datetime
 import pathlib
+import os
 
 script_path = pathlib.Path(__file__).parent.absolute()
 with open(os.path.join(script_path,'append_misc_meta.py'),'w+') as appendfile:
