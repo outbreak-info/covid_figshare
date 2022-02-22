@@ -1,4 +1,5 @@
-import requests
+from outbreak_parser_tools import safe_request as requests
+from outbreak_parser_tools.addendum import Addendum
 from numpy import unique
 from datetime import date, datetime
 import pathlib
@@ -184,6 +185,6 @@ def getCustomValue(arr, citation_obj, fieldname, new_name):
 def load_annotations():
     path_dict = fetch_path_dict()
     docs = getFigshare(ID_API, FIGSHARE_API)
-    for eachdoc in docs:
-        doc = add_anns(path_dict,eachdoc)
-        yield doc
+    Addendum.topic_adder().update(docs)
+    Addendum.altmetric_adder().update(docs)
+    yield from docs
