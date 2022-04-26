@@ -5,14 +5,6 @@ from datetime import date, datetime
 import pathlib
 import os
 
-script_path = pathlib.Path(__file__).parent.absolute()
-with open(os.path.join(script_path,'append_misc_meta.py'),'w+') as appendfile:
-    r = requests.get('https://raw.githubusercontent.com/gtsueng/outbreak_misc_meta/main/append_misc_meta.py')
-    appendfile.write(r.text)
-    appendfile.close()
-
-from append_misc_meta import *
-
 ID_API = "https://covid19.figshare.com/api/institutions/857/"
 FIGSHARE_API = "https://api.figshare.com/v2/articles/"
 
@@ -183,7 +175,6 @@ def getCustomValue(arr, citation_obj, fieldname, new_name):
 
 
 def load_annotations():
-    path_dict = fetch_path_dict()
     docs = getFigshare(ID_API, FIGSHARE_API)
     Addendum.topic_adder().update(docs)
     Addendum.altmetric_adder().update(docs)
